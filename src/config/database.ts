@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import logger from "../utils/logger";
 dotenv.config();
 
 const connectDB = async () => {
@@ -16,9 +16,9 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (err: any) {
-    console.error(`Error: ${err.message}`);
+    logger.error(`Error: ${err.message}`);
     process.exit(1); // Exit process with failure
   }
 };
